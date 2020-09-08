@@ -1,32 +1,51 @@
-## build docker image
+# remove image if it already exists
+```
+docker images |  grep appimage
+docker image rm appimage
+
+docker images |  grep demo-app 
+docker image rm whyfari/demo-app
+```
+
+# build docker image
 - build docker image using the 'Dockerfile', name image 'appimage'
 ```
 docker build . -t appimage
 ```
 
+# OR Get image from docker hub 
+
+```
+docker pull whyfari/demo-app
+```
+
 ## run container using image
-- run a container (name it app01) using the image (appimage)
+- run a container (name it app01) using the image (pulled from docker hub or build)
 - expose container port 8080 to local 8080
 - on wsl was having issues w/o exposing to localhost because I couldn't access the private ip (looked up via docker inpsect) outside in the browser even though I can curl it inside wsl
 
 ```
+# if built manually
 docker run --rm -dt --name app01 -p 8080:8080 appimage
+
+# if pulled from docker hub
+docker run --rm -dt --name app01 -p 8080:8080 whyfari/demo-app
 ```
 
 ## visit website
 ```
 curl localhost:8080
 ```
-
 - visit it on localhost
 
 http://localhost:8080/
 
 - IP of wsl (ip, ifconfig | grep eth0 -A 1)l
-<ip>:8080
-172.21.215.133:8080
+`<ip>:8080`
+`172.21.215.133:8080`
 
 ## stop container 
+- will also remove the container since we started with --rm
 ```
 docker stop app01
 ```
