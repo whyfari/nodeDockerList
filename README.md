@@ -40,8 +40,10 @@ curl localhost:8080
 
 http://localhost:8080/
 
-- IP of wsl (ip, ifconfig | grep eth0 -A 1)l
+- IP of wsl (ip, ifconfig | grep eth0 -A 1)
+<br>
 `<ip>:8080`
+<br>
 `172.21.215.133:8080`
 
 ## stop container 
