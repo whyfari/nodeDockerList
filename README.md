@@ -25,11 +25,12 @@ docker pull whyfari/demo-app
 - on wsl was can't hit private ip (looked up via docker inpsect) outside in windows using the the browser even though I can curl it inside wsl
 
 ```
-# if built manually
-docker run --rm -dt --name app01 -p 8080:8080 appimage
-
 # pull or used pulled from docker hub
 docker run --rm -dt --name app01 -p 8080:8080 whyfari/demo-app
+
+# use built image 
+docker run --rm -dt --name app02 -p 8081:8080 appimage
+
 ```
 
 # visit website
@@ -39,16 +40,20 @@ curl localhost:8080
 - visit it on localhost
 
 http://localhost:8080/
+http://localhost:8081/
 
 - IP of wsl (ip, ifconfig | grep eth0 -A 1)
 ```
 <ip>:8080
+<ip>:8081
 172.21.215.133:8080
+172.21.215.133:8081
 ```
 
 # stop container 
 - will also remove the container since we started with --rm
 ```
 docker stop app01
+docker stop app02
 ```
 
