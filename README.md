@@ -23,3 +23,9 @@ http://localhost:8080/
 - IP of wsl (ip, ifconfig | grep eth0 -A 1)l
 <ip>:8080
 172.21.215.133:8080
+
+## stop container 
+'''
+docker stop app01
+'''
+
